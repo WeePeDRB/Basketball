@@ -6,6 +6,7 @@ TagManager:
   tags:
   - ballTag
   - barrier
+  - selectBall
   layers:
   - Default
   - TransparentFX
