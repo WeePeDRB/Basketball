@@ -44,7 +44,6 @@ public class BallSelection : MonoBehaviour
     // Hit ball
     public void HitBall(Transform ball)
     {
-        Debug.Log("Hit the ball ");
         selectedBall = ball;
         onHitBall?.Invoke(new HitBallEventArgs { hitBall = ball });
     }

@@ -10,8 +10,8 @@ TagManager:
   - basketRing
   - dunkTop
   - dunkBottom
-  - barrierBack
-  - barrierBottom
+  - barrierReset
+  - checkingGoal
   layers:
   - Default
   - TransparentFX

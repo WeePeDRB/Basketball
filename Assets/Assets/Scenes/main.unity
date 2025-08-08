@@ -313,7 +313,7 @@ GameObject:
   - component: {fileID: 482477849}
   - component: {fileID: 482477848}
   m_Layer: 0
-  m_Name: Particle_ThrowingBall
+  m_Name: Particle_Basket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -331,7 +331,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce2293ab1829dbb489d6d113d2892b2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  perfectScoreParticle: {fileID: 2878013522007032693}
+  basketPerfectScoreParticle: {fileID: 2878013522007032693}
   basketFireParticle: {fileID: 2878013522007032674}
 --- !u!4 &482477849
 Transform:
@@ -659,6 +659,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46f8a5327e2ca6c46aaf4edb7f75a8f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &634856293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2878013518701920707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ab8b7b4ba5d1c34d884f6e7fd9d93a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ballFireParticle: {fileID: 2878013522007032678}
 --- !u!114 &701940892
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -684,8 +697,8 @@ GameObject:
   - component: {fileID: 737875086}
   - component: {fileID: 737875085}
   - component: {fileID: 737875084}
-  - component: {fileID: 737875083}
   - component: {fileID: 737875082}
+  - component: {fileID: 737875083}
   m_Layer: 0
   m_Name: Audio_ThrowingBall
   m_TagString: Untagged
@@ -807,6 +820,11 @@ MonoBehaviour:
   - {fileID: 627340457}
   - {fileID: 2878013520950068055}
   - {fileID: 349668030}
+  ballCollide: {fileID: 737875087}
+  basketCollide: {fileID: 737875086}
+  basketPass: {fileID: 737875085}
+  basketPerfect: {fileID: 737875084}
+  cheer: {fileID: 737875082}
 --- !u!82 &737875084
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1635,6 +1653,59 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1109075652
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1109075653}
+  - component: {fileID: 1109075654}
+  m_Layer: 0
+  m_Name: Checking
+  m_TagString: checkingGoal
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1109075653
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1109075652}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.22, z: -0.62}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2878013518752252500}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1109075654
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1109075652}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 9.5, y: 1, z: 18.741783}
+  m_Center: {x: 0, y: 0, z: -8.870892}
 --- !u!95 &1130229283
 Animator:
   serializedVersion: 5
@@ -2097,7 +2168,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 028190560d9ccd32000000000000006d, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -2428,6 +2499,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1727399465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2878013518701920350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ab8b7b4ba5d1c34d884f6e7fd9d93a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ballFireParticle: {fileID: 2878013522007032706}
 --- !u!95 &1746429766
 Animator:
   serializedVersion: 5
@@ -2522,6 +2606,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1888217710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2878013518701920298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ab8b7b4ba5d1c34d884f6e7fd9d93a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ballFireParticle: {fileID: 2878013522007032704}
 --- !u!1 &2026302477
 GameObject:
   m_ObjectHideFlags: 0
@@ -2659,7 +2756,7 @@ GameObject:
   - component: {fileID: 2878013519071019726}
   m_Layer: 10
   m_Name: CubeBottom
-  m_TagString: barrierBottom
+  m_TagString: barrier
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2678,7 +2775,7 @@ GameObject:
   - component: {fileID: 2878013519071019727}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: barrier
+  m_TagString: barrierReset
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2697,7 +2794,7 @@ GameObject:
   - component: {fileID: 2878013519071019728}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: 
+  m_TagString: barrier
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2716,7 +2813,7 @@ GameObject:
   - component: {fileID: 2878013519071019729}
   m_Layer: 10
   m_Name: Cube
-  m_TagString: 
+  m_TagString: barrier
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2735,7 +2832,7 @@ GameObject:
   - component: {fileID: 2878013519071019730}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: 
+  m_TagString: barrier
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2754,7 +2851,7 @@ GameObject:
   - component: {fileID: 2878013519071019731}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: 
+  m_TagString: barrier
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2773,7 +2870,7 @@ GameObject:
   - component: {fileID: 2878013519071019732}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: barrierBack
+  m_TagString: barrier
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2952,6 +3049,7 @@ GameObject:
   - component: {fileID: 2878013520295756609}
   - component: {fileID: 349668030}
   - component: {fileID: 1666293220}
+  - component: {fileID: 1888217710}
   m_Layer: 6
   m_Name: 4
   m_TagString: ballTag
@@ -3008,6 +3106,7 @@ GameObject:
   - component: {fileID: 2878013520295756610}
   - component: {fileID: 814138088}
   - component: {fileID: 1660698726}
+  - component: {fileID: 1727399465}
   m_Layer: 6
   m_Name: 1
   m_TagString: ballTag
@@ -3262,7 +3361,7 @@ GameObject:
   - component: {fileID: 2878013519071019741}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: 
+  m_TagString: barrierReset
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3600,7 +3699,7 @@ GameObject:
   - component: {fileID: 2878013519071019748}
   m_Layer: 10
   m_Name: Cube
-  m_TagString: 
+  m_TagString: barrier
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3653,7 +3752,7 @@ GameObject:
   - component: {fileID: 2878013519071019750}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: 
+  m_TagString: barrierReset
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3911,6 +4010,7 @@ GameObject:
   - component: {fileID: 2878013520295756612}
   - component: {fileID: 627340457}
   - component: {fileID: 549974485}
+  - component: {fileID: 634856293}
   m_Layer: 6
   m_Name: 2
   m_TagString: ballTag
@@ -3968,6 +4068,7 @@ GameObject:
   - component: {fileID: 2878013520295756613}
   - component: {fileID: 2878013520950068055}
   - component: {fileID: 2878013520950068056}
+  - component: {fileID: 2878013520950068060}
   m_Layer: 6
   m_Name: 3
   m_TagString: ballTag
@@ -4258,6 +4359,7 @@ GameObject:
   - component: {fileID: 2878013520295756614}
   - component: {fileID: 2878013520950068054}
   - component: {fileID: 2878013520950068059}
+  - component: {fileID: 2878013520950068061}
   m_Layer: 6
   m_Name: 0
   m_TagString: ballTag
@@ -4405,13 +4507,14 @@ Transform:
   - {fileID: 2878013518752252501}
   - {fileID: 2878013518752252504}
   - {fileID: 2878013518752252567}
-  - {fileID: 2878013518752252502}
   - {fileID: 2878013518752252503}
   - {fileID: 2878013518752252505}
   - {fileID: 2878013518752252506}
   - {fileID: 2878013518752252507}
+  - {fileID: 2878013518752252502}
   - {fileID: 2878013518752252542}
   - {fileID: 2878013518752252570}
+  - {fileID: 1109075653}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &2878013518752252501
@@ -9866,6 +9969,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84c2eed0e3f2a4140b9f524f9b661357, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2878013520950068060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2878013518701920742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ab8b7b4ba5d1c34d884f6e7fd9d93a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ballFireParticle: {fileID: 2878013522007032681}
+--- !u!114 &2878013520950068061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2878013518701920827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ab8b7b4ba5d1c34d884f6e7fd9d93a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ballFireParticle: {fileID: 2878013522007032683}
 --- !u!136 &2878013520966845270
 CapsuleCollider:
   m_ObjectHideFlags: 0

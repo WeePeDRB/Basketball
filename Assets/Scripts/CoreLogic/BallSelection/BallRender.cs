@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BallMaterial : MonoBehaviour
+public class BallRender : MonoBehaviour
 {
     // Material change
     private MeshRenderer meshRenderer;

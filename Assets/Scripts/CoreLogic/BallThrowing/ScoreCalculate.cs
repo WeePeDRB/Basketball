@@ -13,14 +13,14 @@ public class ScoreCalculate : MonoBehaviour
 
     // Calculate score
     private int playerScore;
-    private int perfectStreak;
+    private int perfectStreak; // Store the player perfect streak
 
-    // Event
+    // Events
     public event Action perfectScore;
     public event Action<int> score;
     public event Action<int> onFire;
 
-    // Ball reference control
+    // Subscribe to ball's events
     private void GetBallEvents()
     {
         for (int i = 0; i < ballControlList.Count; i++)
@@ -33,9 +33,13 @@ public class ScoreCalculate : MonoBehaviour
     // Checking the ball state
     private void ScoreGoal(ScoreGoalEventArgs scoreGoalEventArgs)
     {
+        // It's a perfect score when not hit the ring 
         if (!scoreGoalEventArgs.hitRing)
         {
+            // Trigger the perfect score event
             PerfectScore();
+
+            // Increase the streak and invoke a special effect event 
             perfectStreak++;
             OnFire();
         }
@@ -43,26 +47,33 @@ public class ScoreCalculate : MonoBehaviour
         {
             perfectStreak = 0;
         }
+
+        // Calcualate player score
         playerScore++;
         Score();
     }
+
+    // Handle when player miss a goal
     private void MissGoal()
     {
-        Debug.Log("Miss goal");
         perfectStreak = 0;
+        OnFire();
     }
 
     // Invoke Events
     private void PerfectScore()
     {
+        // Triggered when player hit a perfect goal
         perfectScore?.Invoke();
     }
     private void Score()
     {
+        // Trigger when player score a goal
         score?.Invoke(playerScore);
     }
     private void OnFire()
     {
+        // Trigger when player hit a perfect goal 
         onFire?.Invoke(perfectStreak);
     }
 
