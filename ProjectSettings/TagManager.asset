@@ -7,6 +7,11 @@ TagManager:
   - ballTag
   - barrier
   - selectBall
+  - basketRing
+  - dunkTop
+  - dunkBottom
+  - barrierBack
+  - barrierBottom
   layers:
   - Default
   - TransparentFX

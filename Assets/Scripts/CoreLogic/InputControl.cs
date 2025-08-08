@@ -25,13 +25,17 @@ public class InputControl : MonoBehaviour
     // Tracking touch position values
     private Queue<Vector2> positionTrackingQueue;
     private int maxFrames;
+    
 
-    //
+    // Select ball
     private bool isSelectBall;
 
     // Events
     public event Action<TouchingBallEventArgs> onClickBall;
     public event Action<Vector2> onReleaseBall;
+
+    // Coroutine
+    private Coroutine resetDirection;
 
     // Functions that help track the player's finger position
     private void IsTouchingScreen()
@@ -77,7 +81,7 @@ public class InputControl : MonoBehaviour
                 fingerID = -1;
 
                 //
-                positionTrackingQueue.Clear();
+                if (resetDirection == null) resetDirection = StartCoroutine(ResetDirection());
             }
         }
     }
@@ -101,7 +105,7 @@ public class InputControl : MonoBehaviour
         {
             // Get the start and end postion
             Vector2 endPostion = positionTrackingQueue.Last();
-            Vector2 startPostion = positionTrackingQueue.Dequeue();
+            Vector2 startPostion = positionTrackingQueue.Peek();
 
             // Calculate the direction
             direction = (endPostion - startPostion).normalized;
@@ -134,6 +138,13 @@ public class InputControl : MonoBehaviour
     private void OnCloseMenu()
     {
         isSelectBall = false;
+    }
+
+    // Coroutine
+    private IEnumerator ResetDirection()
+    {
+        yield return new WaitForSeconds(0.5f);
+        positionTrackingQueue.Clear();
     }
 
     //
